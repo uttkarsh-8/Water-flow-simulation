@@ -26,3 +26,35 @@
   - Using libraries like LiquidFun which are designed for fluid behaviour.
   - Implementing Smoothed Particle Hydrodynamics(SPH) which directly addresses the continuous nature of fluids by solving approximations to the Navier–Stokes equations. (using softwares like FreeFlow)
   - Computational fluid dynamics (CFD) tools to simulate fluid flow, heat transfer, etc. (using tools like OpenFoam)
+
+
+## Approach 2
+### 3D Water Flow Simulation Through a Pipe
+![image](https://github.com/user-attachments/assets/1ec2db88-a334-45cf-b1ce-c163117a6b8e)
+
+#### Technologies used
+##### Three.js:
+  - Three.js is a JavaScript library which handles all the 3D rendering
+  - dat.GUI provides us with an interactive control for velocity of the particles, changing the heating rate(for first pipe) and cooling rate(for other 2 pipes), a pause button, a button to reset particles, oscialltion amplitude and oscillation frequency to oscilate the pipe.
+
+#### Implementation
+  - We built an interactive 3D simulation using Three.js, where water flow is characterized as a particle system which flows through a pipe:
+  - Section 1 - Hot Inlet: A cylindrical pipe where water is heated
+  - Section 2 - Cooling Chamber: A large square pipe with wider area where cooling of water particles is done
+  - Section 3 - Exit & Cooling Channel: Similar to section 1, through here water flows out while continuing to cool
+  - The pipe is constructed using a combination of TubeGeometry for the cylindrical pipes and BoxGeometry for the cooling chamber. These pipes are grouped together to form a pipe structure.
+  - The water is represented as thousands of particles stored in a BufferGeometry, each with attributes for position, velocity, and temperature.
+  - Custom shaders are used to interpolate particle colours from blue->red or vice versa based on temperature values.
+  - We have then initialized a simulation loop where particle positions and velocities are updated each frame, a constant velocity and gravity component(vector) is applied on the particles. Temperature is adjusted depending on the section the particle, if in Section 1 (hot inlet) they are heated, while those in Sections 2 and 3 gradually cool down.
+  - For interactivity, dat.GUI is integrated to allow real time adjustment of simulation parameters (flow velocity, heating/cooling rates, oscillation amplitude, and frequency), while OrbitControls enable the user to navigate around the scene and view the simulation from different angles.
+  - We have implemented 2 shaders here:
+  - - 1) Vertex Shader - Handles particle positions and passes temperature data.
+      2) Fragment Shader - Creates color gradients for the particles based on colour gradient.
+
+#### Trade-offs/Cons
+  - No physics engine, only visual approximations are used
+
+#### Potential Solutions
+  - Using libraries like LiquidFun which are designed for fluid behaviour.
+  - Implementing Smoothed Particle Hydrodynamics(SPH) which directly addresses the continuous nature of fluids by solving approximations to the Navier–Stokes equations. (using softwares like FreeFlow)
+  - Computational fluid dynamics (CFD) tools to simulate fluid flow, heat transfer, etc. (using tools like OpenFoam)
