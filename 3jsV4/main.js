@@ -38,14 +38,17 @@ function animate() {
   requestAnimationFrame(animate);
   controls.update();
   const elapsed = clock.getElapsedTime();
+
   pipeContainer.rotation.z =
     simulationSettings.oscAmplitude *
     Math.sin(simulationSettings.oscFrequency * elapsed);
   const baseGravity = new THREE.Vector3(0, -0.0005, 0);
+
   const effectiveGravity = baseGravity
     .clone()
     .applyAxisAngle(new THREE.Vector3(0, 0, 1), -pipeContainer.rotation.z);
   updateParticles(particleSystem, effectiveGravity, pipeContainer);
+
   renderer.render(scene, camera);
 }
 
@@ -54,5 +57,6 @@ animate();
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
+
   renderer.setSize(window.innerWidth, window.innerHeight);
 });

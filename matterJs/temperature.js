@@ -17,5 +17,6 @@ function getColorForTemp(t) {
   let amt = map(t, ambientTemp, maxTemp, 0, 1);
   let coldColor = color(0, 0, 255);
   let hotColor = color(255, 0, 0);
+
   return lerpColor(coldColor, hotColor, amt);
 }
