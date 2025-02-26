@@ -15,8 +15,8 @@ export const simulationSettings = {
     }
     posAttr.needsUpdate = true;
   },
-  oscAmplitude: 0.2,
-  oscFrequency: 1.0,
+  oscAmplitude: 0,
+  oscFrequency: 0,
 };
 
 export function getClock() {
