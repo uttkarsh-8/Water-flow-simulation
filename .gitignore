@@ -1,0 +1,11 @@
+/*
+
+!matterJs/
+!3jsV4/
+
+3jsV4/node_modules/
+
+!.gitignore
+
+!3jsV4/package.json
+!3jsV4/package-lock.json
