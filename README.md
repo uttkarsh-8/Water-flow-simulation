@@ -19,6 +19,9 @@
   - Each particle’s color changes continuously (from blue to red) depending on its temperature, using p5’s lerpColor function. To handle collisions between particles and encourage a more fluid-like spread rather than simple rigid-body collisions, a custom applyFluidInteractions function checks the distances between particles; if they are too close, a gentle repulsive force is applied to push them apart. 
   - Particles also have properties like restitution (bounciness), a small airFriction for the particles to reduce “explosive” collisions and reduce their velocities in free flight.
   - Together, these adjustments emulate a simplistic fluid flow behavior: particles flow through the pipe, collide softly with the pipe walls and each other, gradually slow due to air friction, and appear as a cohesive stream rather than individual bouncing balls. Everything is drawn to the p5.js canvas each frame, with the top and bottom edges of the pipes rendered as static bodies, and the particle circles rendered according to their updated positions and interpolated colors. 
+#### How To Run
+  - Install the live server extension on your IDE
+  - Click on it and then you will see the index.html file running on your default browser.  
 #### Trade-offs/Cons
   - One major con is that Matter.js is a 2D rigid-body physics engine, which means it is very good at  handling discrete bodies and collisions but isn’t designed to solve the complex, continuous equations like real fluid dynamics.
 
@@ -50,6 +53,10 @@
   - We have implemented 2 shaders here:
   - - 1) Vertex Shader - Handles particle positions and passes temperature data.
       2) Fragment Shader - Creates color gradients for the particles based on colour gradient.
+     
+#### How To Run
+  - Run this command to download all the node dependencies `npm install`
+  - Run this command to start the server `npx vite`  
 
 #### Trade-offs/Cons
   - No physics engine, only visual approximations are used
